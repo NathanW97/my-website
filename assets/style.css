@@ -1,0 +1,108 @@
+html, body {
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(ellipse at center, #A45497 0%, #061723 100%);
+  background-size: 200% 200%;
+  animation: floatGradient 15s ease-in-out infinite;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes floatGradient {
+  0%   { background-position: 50% 50%; }
+  25%  { background-position: 55% 45%; }
+  50%  { background-position: 50% 55%; }
+  75%  { background-position: 45% 50%; }
+  100% { background-position: 50% 50%; }
+}
+
+header {
+  background: #222;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1em;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+  flex: 1;
+}
+
+button {
+  background: #0078ff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background: #f0f0f0;
+  color: #555;
+  margin-top: 3em;
+}
+
+
+.card {
+  text-align: center;
+  padding: 2em 1em;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 0.5em;
+  flex: 1 1 250px;   /* grow/shrink, base width */
+  max-width: 300px;  /* prevents any card from hogging the row */
+}
+
+.card-container {
+  display: flex;
+  gap: 1.5em;               /* space between items */
+  flex-wrap: wrap;          /* optional, for smaller screens */
+  justify-content: center;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;  /* optional, centers nav if total width < container */
+  max-width: 800px;
+  margin: 0 auto;           /* center horizontally */
+  gap: 0.5em;               /* space between items */
+}
+
+.nav-bar a {
+  flex: 1;                  /* all nav items share equal width */
+  text-align: center;       /* center text */
+  padding: 0.8em 0;     
+  color: white;
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+.nav-bar a:hover {
+  background: #3a3a3a;
+  color: #A45497;
+  font-weight: 600;
+  text-decoration: none;
+}
