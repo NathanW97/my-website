@@ -1,7 +1,6 @@
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+resizeCanvas();
 
 const stars = Array.from({ length: 200 }, () => ({
   x: Math.random() * canvas.width,
@@ -12,18 +11,19 @@ const stars = Array.from({ length: 200 }, () => ({
 }));
 
 function drawStars() {
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  stars.forEach(star => {
+for (const star of stars) {
     star.alpha += star.delta;
     if (star.alpha <= 0 || star.alpha >= 1) star.delta = -star.delta;
-    ctx.globalAlpha = star.alpha;
+
+    // isolate the star alpha so it doesn't affect subsequent drawing
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, star.alpha));
     ctx.fillStyle = 'white';
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
     ctx.fill();
-  });
+    ctx.restore();
+  }
 }
 
 // Shooting star trail
@@ -88,6 +88,7 @@ function drawTrail() {
 
 
 function draw() {
+    ctx.alpha = 1;
     ctx.fillStyle = "rgba(0, 0, 0, 0.3)"; // fade out old frames for smooth trails
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -99,5 +100,12 @@ function draw() {
 function lerp(a, b, t) {
   return a + (b - a) * t;
 }
+
+function resizeCanvas() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
 
 draw();

@@ -21,6 +21,7 @@ header {
   color: white;
   padding: 1em;
   text-align: center;
+  border-bottom: 6px solid white;
 }
 
 nav a {
@@ -72,12 +73,26 @@ footer {
   flex: 1 1 250px;   /* grow/shrink, base width */
   max-width: 300px;  /* prevents any card from hogging the row */
   z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear; /* smooth hover effect */
+  will-change: transform;          /* optimize for transform changes */
+}
+
+.card-content {
+  transition: transform 0.1s ease-in-out;
+  transform-origin: center;
+  height: 100%;
+}
+
+.card-content:hover {
+  transform: scale(1.05);
 }
 
 .card-container {
   display: flex;
   gap: 1.5em;               /* space between items */
   flex-wrap: wrap;          /* optional, for smaller screens */
+  perspective: 1000px;
   justify-content: center;
 }
 
