@@ -1,22 +1,10 @@
 html, body {
   font-family: system-ui, sans-serif;
-  background: radial-gradient(ellipse at center, #A45497 0%, #061723 100%);
-  background-size: 200% 200%;
-  animation: floatGradient 15s ease-in-out infinite;
   height: 100%;
   margin: 0;
   padding: 0;
-  color: #222;
   display: flex;
   flex-direction: column;
-}
-
-@keyframes floatGradient {
-  0%   { background-position: 50% 50%; }
-  25%  { background-position: 55% 45%; }
-  50%  { background-position: 50% 55%; }
-  75%  { background-position: 45% 50%; }
-  100% { background-position: 50% 50%; }
 }
 
 #stars {
